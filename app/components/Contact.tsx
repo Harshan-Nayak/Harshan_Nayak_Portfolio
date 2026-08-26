@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { usePortfolioStore } from "../ConvexClientProvider";
 
 export default function Contact() {
@@ -15,12 +14,37 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      // 1. Try sending directly to live Convex database via HTTP API / Client if configured
+      const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
+      if (convexUrl && typeof window !== "undefined") {
+        try {
+          await fetch(`${convexUrl}/api/mutation`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              path: "contacts:submit",
+              args: {
+                name: name.trim(),
+                email: email.trim(),
+                phone: phone.trim() || undefined,
+                subject: subject.trim(),
+                message: message.trim(),
+              },
+            }),
+          });
+        } catch (convexErr) {
+          console.log("Live Convex sync note:", convexErr);
+        }
+      }
+
+      // 2. Also update local reactive store
       if (store) {
         store.submitContact({
           name: name.trim(),
@@ -30,19 +54,23 @@ export default function Contact() {
           message: message.trim(),
         });
       }
-      setIsSubmitting(false);
+
       setSubmitted(true);
       setName("");
       setEmail("");
       setPhone("");
       setMessage("");
-    }, 400);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="relative py-20 px-4 md:px-8 bg-white">
       <div className="relative z-10 max-w-[1280px] mx-auto">
-        {/* Header (matching mentpath contact) */}
+        {/* Header */}
         <div className="bg-white border-2 border-black rounded-[32px] p-8 md:p-12 text-center mb-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border-2 border-black rounded-full text-xs font-bold text-black mb-4 uppercase tracking-wider">
             Get In Touch
@@ -56,7 +84,7 @@ export default function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-6">
-          {/* Left Cards */}
+          {/* Left Direct Contact Cards */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             {/* Email Card */}
             <a
@@ -83,8 +111,8 @@ export default function Contact() {
               className="flex items-center gap-4 bg-white border-2 border-black rounded-3xl p-5 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 group"
             >
               <div className="w-11 h-11 rounded-2xl bg-white border-2 border-black flex items-center justify-center flex-shrink-0 group-hover:bg-black group-hover:text-white transition-colors">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.062-2.115-.527-1.705-.705-2.812-2.45-2.897-2.564-.085-.114-.689-.915-.689-1.745s.434-1.238.587-1.408c.153-.17.334-.213.447-.213.112 0 .225.001.323.006.104.005.244-.04.382.291.144.344.49 1.192.533 1.28.043.088.072.19.014.305-.058.115-.088.188-.175.291-.087.103-.183.23-.261.309-.09.09-.184.188-.079.369.105.181.468.772 1.004 1.249.691.614 1.274.805 1.455.895.181.09.288.077.394-.044.106-.121.454-.528.576-.708.121-.18.244-.15.408-.09.164.06 1.042.492 1.22.582.179.09.297.135.341.21.044.075.044.436-.1.841zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.178L2 22l4.982-1.39A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
                 </svg>
               </div>
               <div>
@@ -120,7 +148,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Form Card */}
+          {/* Contact Form Card */}
           <form
             onSubmit={handleSubmit}
             className="lg:col-span-3 bg-white border-2 border-black rounded-[32px] p-7 md:p-9 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
@@ -137,7 +165,7 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}
-                  className="px-6 py-2.5 rounded-full border-2 border-black font-bold text-xs hover:bg-black hover:text-white transition-colors"
+                  className="px-6 py-2.5 rounded-full border-2 border-black font-bold text-xs hover:bg-black hover:text-white transition-colors cursor-pointer"
                 >
                   Send Another Note
                 </button>
