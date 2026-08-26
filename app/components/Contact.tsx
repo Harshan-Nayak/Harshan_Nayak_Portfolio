@@ -1,0 +1,220 @@
+"use client";
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { usePortfolioStore } from "../ConvexClientProvider";
+
+export default function Contact() {
+  const store = usePortfolioStore();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [subject, setSubject] = useState("Agentic AI / Full Stack Opportunity");
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !email.trim() || !message.trim()) return;
+
+    setIsSubmitting(true);
+    setTimeout(() => {
+      if (store) {
+        store.submitContact({
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim() || undefined,
+          subject: subject.trim(),
+          message: message.trim(),
+        });
+      }
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    }, 400);
+  };
+
+  return (
+    <section id="contact" className="relative py-20 px-4 md:px-8 bg-white">
+      <div className="relative z-10 max-w-[1280px] mx-auto">
+        {/* Header (matching mentpath contact) */}
+        <div className="bg-white border-2 border-black rounded-[32px] p-8 md:p-12 text-center mb-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border-2 border-black rounded-full text-xs font-bold text-black mb-4 uppercase tracking-wider">
+            Get In Touch
+          </span>
+          <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-black leading-tight">
+            Let&#39;s Build Something <span className="text-black">Amazing</span>
+          </h2>
+          <p className="mt-3 text-black max-w-xl mx-auto leading-relaxed text-sm sm:text-base">
+            Have a project or opportunity in mind? Reach out and let&#39;s discuss how we can collaborate.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-6">
+          {/* Left Cards */}
+          <div className="lg:col-span-2 flex flex-col gap-4">
+            {/* Email Card */}
+            <a
+              href="mailto:harshan2390@gmail.com"
+              className="flex items-center gap-4 bg-white border-2 border-black rounded-3xl p-5 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 group"
+            >
+              <div className="w-11 h-11 rounded-2xl bg-white border-2 border-black flex items-center justify-center flex-shrink-0 group-hover:bg-black group-hover:text-white transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M22 7l-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-sm font-bold text-black">Email Me</p>
+                <p className="text-xs text-zinc-600 font-mono mt-0.5">harshan2390@gmail.com</p>
+              </div>
+            </a>
+
+            {/* WhatsApp Card */}
+            <a
+              href="https://wa.me/917989628048?text=Hi%20Harshan%2C%20I&#39;d%20like%20to%20connect%20with%20you."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 bg-white border-2 border-black rounded-3xl p-5 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 group"
+            >
+              <div className="w-11 h-11 rounded-2xl bg-white border-2 border-black flex items-center justify-center flex-shrink-0 group-hover:bg-black group-hover:text-white transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-sm font-bold text-black">WhatsApp Direct</p>
+                <p className="text-xs text-zinc-600 font-mono mt-0.5">+91 7989628048</p>
+              </div>
+            </a>
+
+            {/* Location & Social */}
+            <div className="bg-white border-2 border-black rounded-3xl p-5 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <p className="text-sm font-bold text-black mb-2">Location &amp; Work Mode</p>
+              <p className="text-xs text-zinc-700">Noida, Uttar Pradesh (On-site @ HCLSoftware)</p>
+              <p className="text-xs text-zinc-700 mt-1">Open to Agentic AI &amp; Full Stack roles</p>
+
+              <div className="flex gap-2 mt-4 pt-4 border-t border-zinc-200">
+                <a
+                  href="https://github.com/Harshan-Nayak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-2 text-center rounded-full bg-black text-white text-xs font-bold hover:bg-zinc-800 transition-colors"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/harshan-nayak-020754285/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-2 text-center rounded-full border-2 border-black text-black text-xs font-bold hover:bg-black hover:text-white transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Form Card */}
+          <form
+            onSubmit={handleSubmit}
+            className="lg:col-span-3 bg-white border-2 border-black rounded-[32px] p-7 md:p-9 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+          >
+            {submitted ? (
+              <div className="text-center py-12">
+                <div className="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                  ✓
+                </div>
+                <h3 className="text-2xl font-black text-black mb-2">Message Transmitted!</h3>
+                <p className="text-sm text-zinc-700 mb-6">
+                  Thank you for reaching out. Harshan will get back to you shortly.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="px-6 py-2.5 rounded-full border-2 border-black font-bold text-xs hover:bg-black hover:text-white transition-colors"
+                >
+                  Send Another Note
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="grid sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label className="block text-xs font-bold text-black mb-1.5">Your Name *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="John Doe"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full px-4 py-3 rounded-2xl border-2 border-black bg-white text-black text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-black"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-black mb-1.5">Your Email *</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="john@example.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full px-4 py-3 rounded-2xl border-2 border-black bg-white text-black text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-black"
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-xs font-bold text-black mb-1.5">Phone Number</label>
+                  <input
+                    type="tel"
+                    placeholder="+91 9876543210"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full px-4 py-3 rounded-2xl border-2 border-black bg-white text-black text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-black"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-xs font-bold text-black mb-1.5">Subject</label>
+                  <input
+                    type="text"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                    className="w-full px-4 py-3 rounded-2xl border-2 border-black bg-white text-black text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-black"
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-xs font-bold text-black mb-1.5">Your Message *</label>
+                  <textarea
+                    rows={4}
+                    required
+                    placeholder="Tell me about the project or role scope..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className="w-full px-4 py-3 rounded-2xl border-2 border-black bg-white text-black text-sm placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-black resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-4 rounded-full bg-black text-white font-bold text-sm hover:bg-zinc-800 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] disabled:opacity-50 cursor-pointer"
+                >
+                  {isSubmitting ? "Transmitting..." : "Send Message"}
+                </button>
+              </>
+            )}
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
