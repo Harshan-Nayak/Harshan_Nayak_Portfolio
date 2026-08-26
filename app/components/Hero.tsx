@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
-  const resumeLink = "https://drive.google.com/file/d/1LMHvt9XGYQjNcmPNdhI3EokCtSiHx21f/view?usp=sharing";
+  const resumeLink = "https://drive.google.com/file/d/1Aebp6MeMKoEaUPi7yAy5SGgMWsk1Vk6i/view?usp=sharing";
   const phone = "+91 7989628048";
   const email = "harshan2390@gmail.com";
   const whatsappUrl = "https://wa.me/917989628048?text=Hi%20Harshan%2C%20I%20would%20like%20to%20connect%20with%20you.";
