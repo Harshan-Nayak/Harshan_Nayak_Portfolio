@@ -141,31 +141,6 @@ export default function Hero() {
           </a>
         </motion.div>
       </div>
-
-      {/* 4 Bottom Stat Cards */}
-      <div className="w-full max-w-[1000px] mx-auto mt-12">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-white border-2 border-black rounded-[28px] p-6 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
-            <p className="text-2xl md:text-3xl font-black text-black">HCL SE-2</p>
-            <p className="text-[11px] uppercase tracking-widest text-black font-bold mt-2">Agentic AI &amp; Runbooks</p>
-          </div>
-
-          <div className="bg-white border-2 border-black rounded-[28px] p-6 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
-            <p className="text-2xl md:text-3xl font-black text-black">500+</p>
-            <p className="text-[11px] uppercase tracking-widest text-black font-bold mt-2">DSA Problems Solved</p>
-          </div>
-
-          <div className="bg-white border-2 border-black rounded-[28px] p-6 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
-            <p className="text-2xl md:text-3xl font-black text-black">15+</p>
-            <p className="text-[11px] uppercase tracking-widest text-black font-bold mt-2">Platforms Shipped</p>
-          </div>
-
-          <div className="bg-white border-2 border-black rounded-[28px] p-6 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
-            <p className="text-2xl md:text-3xl font-black text-black">99.9%</p>
-            <p className="text-[11px] uppercase tracking-widest text-black font-bold mt-2">Autonomous Uptime</p>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }

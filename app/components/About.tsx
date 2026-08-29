@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function About() {
   const principles = [
     "Agentic AI & Multi-Agent Workflows",
-    "Algorithmic Rigor & 500+ CP Problems",
+    "Algorithmic Rigor & Problem Solving",
     "Clean, Type-Safe Next.js Architectures",
     "Automated IaaS with Ansible & AWX",
     "Enterprise ServiceNow Remediation Pipelines",
@@ -35,47 +35,6 @@ export default function About() {
             <p className="text-6xl font-black text-white">SE-2</p>
             <p className="text-white text-sm font-bold mt-2 uppercase tracking-wider">HCLSoftware</p>
             <p className="text-zinc-400 text-xs font-mono mt-1">BigFix AEX &amp; Runbook AI</p>
-          </div>
-
-          {/* 3 Metric Cards */}
-          <div className="bg-white border-2 border-black rounded-3xl p-6 flex items-center gap-5 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
-            <div className="w-14 h-14 rounded-2xl bg-white border-2 border-black flex items-center justify-center flex-shrink-0 text-black">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
-            </div>
-            <div>
-              <p className="text-3xl font-black text-black leading-none">15+</p>
-              <p className="text-[11px] text-black/70 font-black uppercase tracking-wider mt-1.5">Platforms Shipped</p>
-            </div>
-          </div>
-
-          <div className="bg-white border-2 border-black rounded-3xl p-6 flex items-center gap-5 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
-            <div className="w-14 h-14 rounded-2xl bg-white border-2 border-black flex items-center justify-center flex-shrink-0 text-black">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M8 12h8" />
-                <path d="M12 8v8" />
-              </svg>
-            </div>
-            <div>
-              <p className="text-3xl font-black text-black leading-none">500+</p>
-              <p className="text-[11px] text-black/70 font-black uppercase tracking-wider mt-1.5">DSA Problems Solved</p>
-            </div>
-          </div>
-
-          <div className="bg-white border-2 border-black rounded-3xl p-6 flex items-center gap-5 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
-            <div className="w-14 h-14 rounded-2xl bg-white border-2 border-black flex items-center justify-center flex-shrink-0 text-black">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M2 12h20" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-              </svg>
-            </div>
-            <div>
-              <p className="text-3xl font-black text-black leading-none">29+</p>
-              <p className="text-[11px] text-black/70 font-black uppercase tracking-wider mt-1.5">States Reached</p>
-            </div>
           </div>
 
           {/* Engineering Strengths Checklist */}

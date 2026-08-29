@@ -113,8 +113,8 @@ export const initialProjectsData: ProjectItem[] = [
       { title: "Matching Engine", description: "Implemented vector embedding similarity between candidate profiles and job descriptions." },
       { title: "Real-Time Messaging", description: "Constructed low-latency chat and notification pipelines." }
     ],
-    detailsUrl: "https://github.com/Harshan-Nayak",
-    githubUrl: "https://github.com/Harshan-Nayak",
+    detailsUrl: "https://www.jobreferral.shop/",
+    githubUrl: "https://www.jobreferral.shop/",
     likes: 87,
     featured: true,
   },
@@ -167,8 +167,8 @@ export const initialProjectsData: ProjectItem[] = [
       { title: "Navigation Optimization", description: "Redesigned categorical taxonomy to reduce bounce rates and maximize product discovery." },
       { title: "Real-Time Stock Handling", description: "Integrated database triggers for instant inventory deduction on payment completion." }
     ],
-    detailsUrl: "https://github.com/Harshan-Nayak",
-    githubUrl: "https://github.com/Harshan-Nayak",
+    detailsUrl: "https://www.indiyase.in/",
+    githubUrl: "https://www.indiyase.in/",
     likes: 76,
     featured: false,
   },
@@ -194,8 +194,8 @@ export const initialProjectsData: ProjectItem[] = [
       { title: "Performance Tuning", description: "Implemented responsive image optimization and edge caching to achieve perfect Lighthouse scores." },
       { title: "Community Features", description: "Rolled out moderation tools, user profiles, and discussion upvotes." }
     ],
-    detailsUrl: "https://github.com/Harshan-Nayak",
-    githubUrl: "https://github.com/Harshan-Nayak",
+    detailsUrl: "https://www.telugumahila.com/",
+    githubUrl: "https://www.telugumahila.com/",
     likes: 64,
     featured: false,
   },
